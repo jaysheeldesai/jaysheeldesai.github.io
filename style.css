@@ -656,6 +656,39 @@ span{
   z-index:1;
 }
 
+/* Always-visible navigation */
+:root{
+  --header-height:72px;
+}
+
+body{
+  padding-top:var(--header-height);
+}
+
+.site-header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  min-height:var(--header-height);
+  z-index:1000;
+  box-shadow:0 10px 28px rgba(7,26,51,.06);
+}
+
+section{
+  scroll-margin-top:calc(var(--header-height) + 22px);
+}
+
+@media(max-width:700px){
+  :root{
+    --header-height:64px;
+  }
+
+  .site-header{
+    min-height:var(--header-height);
+  }
+}
+
 #education{
   border-top:1px solid rgba(19,32,51,.08);
   border-bottom:1px solid rgba(19,32,51,.08);
