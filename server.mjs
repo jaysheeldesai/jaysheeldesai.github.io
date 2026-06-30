@@ -50,7 +50,7 @@ function sameOrigin(req) {
   const origin = req.headers.origin;
   if (!origin) return true;
   const fetchSite = String(req.headers["sec-fetch-site"] || "").toLowerCase();
-  if (fetchSite && fetchSite !== "same-origin") return false;
+  if (fetchSite) return fetchSite === "same-origin";
   try {
     const supplied = new URL(origin);
     const forwardedProto = String(req.headers["x-forwarded-proto"] || "").split(",")[0].trim();
