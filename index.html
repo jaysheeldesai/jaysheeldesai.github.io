@@ -28,6 +28,13 @@
       <a href="#progress">Progress</a>
       <a href="#contact">Contact</a>
     </nav>
+    <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <a class="logout-btn" href="/logout" aria-label="Log out of private portfolio">
+      <i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>
+      <span>Log out</span>
+    </a>
   </header>
 
   <main>
@@ -367,6 +374,7 @@
   <footer>
     <p>© 2026 Jaysheel Desai. Designed as a pre-medical portfolio showcasing growth, service, research, teaching, and clinical exposure.</p>
   </footer>
+  <script src="site-nav.js" defer></script>
   <script>
     (() => {
       const motionAllowed = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;

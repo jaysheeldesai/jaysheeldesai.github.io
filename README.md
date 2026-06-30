@@ -1,3 +1,7 @@
-# Jaysheel Desai Portfolio Website
+# Jaysheel Desai — Secure Portfolio
 
-Open `index.html` in a web browser to view the website. Upload this folder to GitHub Pages to publish it online.
+This portfolio requires the included Node.js authentication server. It must not
+be deployed as a static GitHub Pages site because static hosting cannot protect
+the HTML, images, resume, or PDFs.
+
+See `DEPLOYMENT.md` for secure hosting requirements.
