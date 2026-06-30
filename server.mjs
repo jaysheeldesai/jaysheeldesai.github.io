@@ -49,9 +49,21 @@ function cookie(req, value, clear = false) {
 function sameOrigin(req) {
   const origin = req.headers.origin;
   if (!origin) return true;
-  const forwardedProto = String(req.headers["x-forwarded-proto"] || "http").split(",")[0].trim();
-  const forwardedHost = String(req.headers["x-forwarded-host"] || req.headers.host || "").split(",")[0].trim();
-  return origin === `${forwardedProto}://${forwardedHost}`;
+  const fetchSite = String(req.headers["sec-fetch-site"] || "").toLowerCase();
+  if (fetchSite && fetchSite !== "same-origin") return false;
+  try {
+    const supplied = new URL(origin);
+    const forwardedProto = String(req.headers["x-forwarded-proto"] || "").split(",")[0].trim();
+    if (forwardedProto && supplied.protocol !== `${forwardedProto}:`) return false;
+    const validHosts = [
+      req.headers["x-forwarded-host"],
+      req.headers.host,
+      process.env.RENDER_EXTERNAL_HOSTNAME
+    ].flatMap(value => String(value || "").split(",")).map(value => value.trim().toLowerCase()).filter(Boolean);
+    return validHosts.includes(supplied.host.toLowerCase());
+  } catch {
+    return false;
+  }
 }
 
 function sessionId(req) {
