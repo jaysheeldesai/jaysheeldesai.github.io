@@ -32,8 +32,8 @@ h1,h2,h3,p{overflow-wrap:break-word}h1{font-size:clamp(2.8rem,6vw,5.7rem);line-h
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}.motion-ready .opp-card,.motion-ready .category-card,.motion-ready .detail-card,.motion-ready .resource-card,.motion-ready .reveal{opacity:1;transform:none}}
 
 /* Keep MedPath navigation left-aligned and remove legacy logout controls. */
-.site-header .header-inner{justify-content:flex-start}
-.site-header .nav{justify-content:flex-start}
+.site-header .header-inner{justify-content:space-between}
+.site-header .nav{justify-content:flex-end}
 .site-header a[href*="logout"],
 .site-header a[href*="Logout"],
 .logout-btn,
